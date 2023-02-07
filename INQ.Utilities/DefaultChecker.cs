@@ -1,4 +1,6 @@
-﻿namespace INQ.Utilities;
+﻿using INQ.Utilities.Extensions;
+
+namespace INQ.Utilities;
 
 public static class DefaultChecker
 {
