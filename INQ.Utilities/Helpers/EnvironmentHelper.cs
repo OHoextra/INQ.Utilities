@@ -1,4 +1,4 @@
-﻿namespace INQ.Utilities;
+﻿namespace INQ.Utilities.Helpers;
 
 public static class EnvironmentHelper
 {
@@ -8,13 +8,13 @@ public static class EnvironmentHelper
     public static bool IsDevelopment()
     {
         var environmentName = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-        if (string.IsNullOrWhiteSpace(environmentName)) 
+        if (string.IsNullOrWhiteSpace(environmentName))
             environmentName = DEFAULT_ENVIRONMENT;
 
         return environmentName == DEVELOPMENT_ENVIRONMENT;
     }
 
-    public static string GetEnvironment() 
+    public static string GetEnvironment()
         => Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? DEFAULT_ENVIRONMENT;
 }
 

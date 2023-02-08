@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 
-namespace INQ.Utilities;
+namespace INQ.Utilities.Helpers;
 
 public static class ConfigurationHelper
 {

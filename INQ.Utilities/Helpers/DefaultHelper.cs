@@ -1,6 +1,6 @@
 ﻿using INQ.Utilities.Extensions;
 
-namespace INQ.Utilities;
+namespace INQ.Utilities.Helpers;
 
 public static class DefaultChecker
 {
@@ -35,10 +35,10 @@ public static class DefaultChecker
     public static bool IsNotDefault(int? value)
         => !IsDefault(value);
 
-    public static bool IsNotDefault(string? value) 
+    public static bool IsNotDefault(string? value)
         => !IsDefault(value);
 
-    public static bool IsNotDefault(IEnumerable<string>? value) 
+    public static bool IsNotDefault(IEnumerable<string>? value)
         => !IsDefault(value);
 
     public static bool IsNotDefault(DateTime? value)

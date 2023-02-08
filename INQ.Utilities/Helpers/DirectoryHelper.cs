@@ -1,4 +1,4 @@
-﻿namespace INQ.Utilities;
+﻿namespace INQ.Utilities.Helpers;
 
 public static class DirectoryHelper
 {
