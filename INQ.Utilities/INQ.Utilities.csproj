@@ -1,9 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <Title>$(AssemblyName)</Title>
+    <Description>Herlper classes and extensions to common data-types and operations, involving a minimum of external dependencies.</Description>
+    <PackageProjectUrl>https://dev.azure.com/OHoekstra/INQ.Utilities</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/OHoextra/INQ.Utilities</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>Utilities, helper classes, extensions, value types, generics</PackageTags>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageId>$(AssemblyName)</PackageId>
   </PropertyGroup>
 
   <ItemGroup>

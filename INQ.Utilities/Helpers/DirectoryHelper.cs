@@ -2,8 +2,6 @@
 
 public static class DirectoryHelper
 {
-    private static readonly ILogger Logger = Log.ForContext(typeof(DirectoryHelper));
-
     public static string GetExistingPathForFile(string fileName, string basePath = "")
     {
         if (string.IsNullOrWhiteSpace(fileName))
@@ -15,7 +13,6 @@ public static class DirectoryHelper
         {
             if (!Directory.Exists(basePath))
             {
-                Logger.Information("Creating directory: '{BasePath}'..", basePath);
                 Directory.CreateDirectory(basePath);
             }
             fullFilePath = Path.Combine(basePath, fileName);
