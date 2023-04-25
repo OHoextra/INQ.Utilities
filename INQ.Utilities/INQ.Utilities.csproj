@@ -12,6 +12,9 @@
     <PackageTags>Utilities, helper classes, extensions, value types, generics</PackageTags>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <PackageId>$(AssemblyName)</PackageId>
+    <Authors>Olaf Hoekstra</Authors>
+    <Company>INQ</Company>
+    <PackageReadmeFile>README.md.txt</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
