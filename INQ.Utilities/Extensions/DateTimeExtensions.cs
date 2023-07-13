@@ -1,13 +1,14 @@
-﻿namespace INQ.Utilities.Extensions;
+﻿using System;
+
+namespace INQ.Utilities.Extensions;
 
 public static class DateTimeExtensions
 {
-    public static bool IsEqual(this DateTime? src, DateTime? dst)
+    public static bool IsDefault(DateTime? dateTime)
     {
-        if (src.HasValue == false && dst.HasValue == false) return true;
-        if (src.HasValue == false || dst.HasValue == false) return false;
-
-        return src.Value.IsEqual(dst.Value);
+        return !dateTime.HasValue
+               || dateTime.Equals(DateTime.MinValue)
+               || dateTime.Equals(DateTime.MaxValue);
     }
 
     public static bool IsEqual(this DateTime src, DateTime dst)

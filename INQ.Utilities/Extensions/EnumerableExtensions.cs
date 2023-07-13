@@ -2,8 +2,20 @@
 
 public static class EnumerableExtensions
 {
-    public static IEnumerable<TType> Page<TType>(
-        this IEnumerable<TType> entitiesToPage, 
+    public static bool IsDefault<TType>(this IEnumerable<TType>? collection)
+        => collection == null
+           || !collection.Any();
+
+    public static bool ContainsNulls<TType>(this IEnumerable<TType?>? collection)
+    {
+        var itemList = collection?.ToList();
+        if (itemList.IsDefault()) return true;
+
+        return itemList?.Any(item => item == null) ?? true;
+    }
+
+    public static IEnumerable<TEntity> Page<TEntity>(
+        this IEnumerable<TEntity> entitiesToPage,
         int pageNumber = 0,
         int pageSize = 20)
     {

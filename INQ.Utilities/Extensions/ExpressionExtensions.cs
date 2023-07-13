@@ -5,6 +5,25 @@ namespace INQ.Utilities.Extensions;
 
 public static class ExpressionExtensions
 {
+    /// <summary>
+    /// Returns the inner-most property name from the property path.
+    /// </summary>
+    public static string PropertyName(this Expression expression)
+    {
+        var propertyPath = expression.PropertyPath();
+
+        var propertyName = propertyPath.Contains('.')
+            ? propertyPath[(propertyPath.LastIndexOf(".", StringComparison.Ordinal) + 1)..]
+            : propertyPath;
+
+        return propertyName;
+    }
+
+    /// <summary>
+    /// Returns the property path, nested properties are separated by: '.'.
+    /// </summary>
+    /// <param name="expression"></param>
+    /// <returns></returns>
     public static string PropertyPath(this Expression expression)
     {
         var path = new StringBuilder();
@@ -18,9 +37,9 @@ public static class ExpressionExtensions
 
         var pathString = path.ToString();
 
-        return !pathString.Contains('.') // Attempt to exclude the outer-most class instance.
+        return !pathString.Contains('.') // Exclude the outer-most class instance name from the class property path.
             ? pathString
-            : pathString[(pathString.IndexOf(".", StringComparison.Ordinal) + 1) ..];
+            : pathString[(pathString.IndexOf(".", StringComparison.Ordinal) + 1)..];
     }
 
     public static MemberExpression? ToMemberExpression(this Expression expression)
