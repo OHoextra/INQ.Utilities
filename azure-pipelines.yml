@@ -39,6 +39,8 @@ steps:
           Write-Host "VersionPrefix does not have a value, verify it is set in the .csproj file."
           Write-Host "Actual project .csproj file as xml bellow:"
           Write-Host $csproj.InnerXml
+          Write-Host "PropertyGroup bellow:"
+          Write-Host $propertyGroup
           exit 1
         } 
       } 
@@ -47,6 +49,8 @@ steps:
         Write-Host "Could not find VersionPrefix, verify it exists within the project .csproj file."
         Write-Host "Actual project .csproj file as xml bellow:"
         Write-Host $csproj.InnerXml
+        Write-Host "PropertyGroup bellow:"
+        Write-Host $propertyGroup
         exit 1
       } 
       $versionSuffix = "Alpha"
