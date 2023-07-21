@@ -2,10 +2,9 @@
 
 	<PropertyGroup>
 		<Version>1.0.2</Version>
-
-		<Title>$(AssemblyName)</Title>
+		<PackageId>INQ.Utilities</PackageId>
+		<Title>Utilities</Title>
 	    <Description>Helper classes and extensions to common data-types and operations, involving a minimum of external dependencies.</Description>
-	    <PackageId>$(AssemblyName)</PackageId>
 		<Company>INQ</Company>
 	    <Authors>Olaf Hoekstra</Authors>
 	  
