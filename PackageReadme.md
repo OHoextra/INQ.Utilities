@@ -21,6 +21,6 @@ Website: https://olafhoekstra.nl
 
 ## Links
 Link for planning using Jira: <To-be-added!>
-Link for SourceControl using GIT: https://github.com/OHoextra/INQ.Utilities
 Link for documentation using Confluence: https://ohoekstra.atlassian.net/wiki/spaces/SD/pages/66106/INQ.Utilities
-Link for CI/CD using DevOps: https://dev.azure.com/OHoekstra/
+Link for SourceControl using GIT: https://github.com/OHoextra/INQ.Utilities
+Link for CI/CD using DevOps: https://dev.azure.com/OHoekstra/INQ.Utilities
