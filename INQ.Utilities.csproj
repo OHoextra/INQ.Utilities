@@ -5,9 +5,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	    <Nullable>enable</Nullable>
 	   
-		<!-- Todo: External automatic incrementation? -->
 		<VersionPrefix>1.0.2</VersionPrefix>
-		<VersionSuffix>$(VersionSuffix)</VersionSuffix>
+		<VersionSuffix Condition="'$(VersionSuffix)'==''">local</VersionSuffix>
 		
 		<Title>$(AssemblyName)</Title>
 	    <Description>Helper classes and extensions to common data-types and operations, involving a minimum of external dependencies.</Description>
@@ -21,7 +20,7 @@
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageProjectUrl>https://dev.azure.com/OHoekstra/INQ.Utilities</PackageProjectUrl>
 		<PackageTags>Utilities, helper classes, extensions, value types, generics</PackageTags>
-	    <PackageReadmeFile>Readme.md</PackageReadmeFile>
+	    <PackageReadmeFile>README.md</PackageReadmeFile>
 		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
