@@ -1,19 +1,26 @@
 # INQ.Utilities
-ommon-use and/or generic and/or abstract utilities without too much unnecessary dependencies.
 
-## Usage
+## Table of contents
+* [Description](#description)
+* [Examples](#examples)
+* [Author](#author)
+* [Links](#links)
 
-Examples about how to use your package by providing code snippets/example images, or samples links on GitHub if applicable. 
 
-- Provide sample code using code snippets
-- Include screenshots, diagrams, or other visual help users better understand how to use your package
+## Description
+Common-use and/or generic and/or abstract utilities without too much unnecessary dependencies.
 
-## Additional documentation
+## Examples
+TODO: add example snippets
 
-Provide links to more resources: List links such as detailed documentation, tutorial videos, blog posts, or any other relevant documentation to help users get the most out of your package.
+## Author
+Name: Olaf Hoekstra
+Bank account: NL54INGB0008723131 (fund me plox)
+Email: o.hoekstra@outlook.com
+Website: https://olafhoekstra.nl
 
-## Feedback
-
-Where and how users can leave feedback?
-
-- Links to a GitHub repository where could open issues, Twitter, a Discord channel, bug tracker, or other platforms where a package consumer can connect with the package author.
+## Links
+Link for planning using Jira: <To-be-added!>
+Link for SourceControl using GIT: https://github.com/OHoextra/INQ.Utilities
+Link for documentation using Confluence: https://ohoekstra.atlassian.net/wiki/spaces/SD/pages/66106/INQ.Utilities
+Link for CI/CD using DevOps: https://dev.azure.com/OHoekstra/

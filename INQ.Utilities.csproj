@@ -5,8 +5,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	    <Nullable>enable</Nullable>
 	   
-		<!-- Automatic incrementation -->
-		<VersionPrefix>1.0.1</VersionPrefix>
+		<!-- Todo: External automatic incrementation? -->
+		<VersionPrefix>1.0.2</VersionPrefix>
 		<VersionSuffix>$(VersionSuffix)</VersionSuffix>
 		
 		<Title>$(AssemblyName)</Title>
@@ -17,12 +17,10 @@
 	  
 		<RepositoryUrl>https://github.com/OHoextra/INQ.Utilities</RepositoryUrl>
 	    <RepositoryType>git</RepositoryType>
-		
+
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	    <PackageProjectUrl>https://dev.azure.com/OHoekstra/INQ.Utilities</PackageProjectUrl>
+		<PackageProjectUrl>https://dev.azure.com/OHoekstra/INQ.Utilities</PackageProjectUrl>
 		<PackageTags>Utilities, helper classes, extensions, value types, generics</PackageTags>
-		
-		<!-- Required for NuGet readne -->
 	    <PackageReadmeFile>PackageReadme.md</PackageReadmeFile>
 		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
