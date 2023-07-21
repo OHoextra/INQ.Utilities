@@ -1,10 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-	    <Nullable>enable</Nullable>
-
 		<Version>1.0.2</Version>
 
 		<Title>$(AssemblyName)</Title>
@@ -20,8 +16,14 @@
 		<PackageProjectUrl>https://dev.azure.com/OHoekstra/INQ.Utilities</PackageProjectUrl>
 		<PackageTags>Utilities, helper classes, extensions, value types, generics</PackageTags>
 	    <PackageReadmeFile>README.md</PackageReadmeFile>
+		
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<OptimizeImplicitlyTriggeredBuild>True</OptimizeImplicitlyTriggeredBuild>
+		<Nullable>enable</Nullable>
 		<GenerateTargetFrameworkAttribute>false</GenerateTargetFrameworkAttribute>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
