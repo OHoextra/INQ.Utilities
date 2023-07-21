@@ -7,8 +7,8 @@
 * [Links](#links)
 
 
-## Description
-Common-use and/or generic and/or abstract utilities without too much unnecessary dependencies.
+<br />## Description
+<br />Common-use and/or generic and/or abstract utilities without too much unnecessary dependencies.
 
 ## Examples
 TODO: add example snippets
