@@ -1,12 +1,115 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+trigger:
+- master
 
-namespace INQ.Utilities
-{
-    class azure_pipelines
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/*.sln'
+  project: '**/*.csproj'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  
+steps: 
+# TODO: test external suffix by param, rrefactor script to work for a project in other directories, or when there are 2 projects in the same directory.
+- powershell: |
+    $csprojFiles = Get-ChildItem -Path $(System.DefaultWorkingDirectory) -Filter '*.csproj' -Recurse
+    if ($csprojFiles.Count -eq 1) 
     {
+      $csprojPath = $csprojFiles[0].FullName
+      $csproj = [xml](Get-Content -Path $csprojPath)
+      $propertyGroup = $csproj.Project.PropertyGroup
+      $versionPrefixElement = $propertyGroup["VersionPrefix"]
+      $versionSuffixElement = $propertyGroup["VersionSuffix"]
+      $buildId = $(Build.BuildId)
+      if ([string]::IsNullOrEmpty($buildId))
+      {
+        Write-Host "buildId does not have a value."
+        exit 1
+      }
+      if ($versionPrefixElement -ne $null) 
+      {
+        if (-not [string]::IsNullOrEmpty($versionPrefixElement.InnerText)) 
+        {
+          $versionPrefix = $versionPrefixElement.InnerText + "." + $buildId
+          $versionPrefixElement.InnerText = $versionPrefix
+        } 
+        else
+        {
+          Write-Host "VersionPrefix does not have a value, verify it is set in the .csproj file."
+          Write-Host "Actual project .csproj file as xml bellow:"
+          Write-Host $csproj.InnerXml
+          exit 1
+        } 
+      } 
+      else
+      {
+        Write-Host "Could not find VersionPrefix, verify it exists within the project .csproj file."
+        Write-Host "Actual project .csproj file as xml bellow:"
+        Write-Host $csproj.InnerXml
+        exit 1
+      } 
+      $versionSuffix = "Alpha"
+      $targetEnvironment = $env:TARGET_ENVIRONMENT
+      if (-not [string]::IsNullOrEmpty($targetEnvironment)) 
+      {
+        if ($targetEnvironment -in ('testing', 'test', 'staging', 'qa')) 
+        {
+          $versionSuffix = "Beta"
+        }
+        if ($targetEnvironment -in ('production', 'prod', 'release', 'live')) 
+        {
+          $versionSuffix = ""
+        }
+      }
+      $versionSuffixElement.InnerText = $versionSuffix
+
+      $csproj.Save($csprojPath)
+
+      Write-Host "##vso[task.setvariable variable=versionPrefix;]$versionPrefix"
+      Write-Host "##vso[task.setvariable variable=versionSuffix;]$versionSuffix"
+    } 
+    elseif ($csprojFiles.Count -gt 1) 
+    {
+        Write-Host "Multiple .csproj files found. Please ensure there is only one .csproj file in the directory. DefaultWorkingDirectory='$(System.DefaultWorkingDirectory)'."
+        exit 1
+    } 
+    else 
+    {
+        Write-Host "No .csproj file found. DefaultWorkingDirectory='$(System.DefaultWorkingDirectory)'."
+        exit 1
     }
-}
+  displayName: 'Auto-increment version from VersionPrefix by BuildId and optionally add a environment-based VersionSuffix.'
+
+- script: dotnet restore
+  displayName: 'Restoring referenced NuGet Packages..'
+
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'Building the solution..'
+
+- script: dotnet pack --configuration $(buildConfiguration) --output $(Build.ArtifactStagingDirectory)
+  displayName: 'Creating a new NuGet Package for this solution with versionSuffix:"($versionSuffix)"..'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+    artifact: 'nuget-package'
+    publishLocation: 'pipeline'
+  
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(build.artifactStagingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: VSTest@2
+  inputs:
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
