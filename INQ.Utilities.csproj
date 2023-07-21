@@ -14,7 +14,18 @@
 
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<PackageProjectUrl>https://dev.azure.com/OHoekstra/INQ.Utilities</PackageProjectUrl>
-		<PackageTags>Utilities, helper classes, extensions, value types, generics</PackageTags>
+		<PackageTags>
+			INQ, 
+			Inquisitor,
+			Utility,
+			Utilities, 
+			Helper,
+			Helpers,
+			Helper classes, 
+			Extensions, 
+			Value types, 
+			Generics
+		</PackageTags>
 	    <PackageReadmeFile>README.md</PackageReadmeFile>
 		
 		<TargetFramework>net7.0</TargetFramework>
